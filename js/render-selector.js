@@ -82,6 +82,7 @@ const articles = [
     category: "test",
   },
 ];
+
 const userData = {};
 
 const refs = {
@@ -159,6 +160,5 @@ function getStoregedData() {
   refs.inputedName.value = userData.name;
   refs.inputedSurName.value = userData.surname;
 }
+
 getStoregedData();
-// - При перезагрузке страницы имя пользовател и выбранная категория должна //
-//сохранятся
