@@ -106,6 +106,7 @@ function createUserdata() {
 }
 
 function createSelector(arr) {
+  const userData = JSON.parse(localStorage.getItem("userData"));
   const selector = document.createElement("select");
   selector.classList.add("selector");
   const firstOption = document.createElement("option");
@@ -114,6 +115,9 @@ function createSelector(arr) {
   for (let i = 0; i <= arr.length - 1; i += 1) {
     let option = document.createElement("option");
     option.textContent = arr[i];
+    // if (userData.category === option.textContent) {
+    //   option.setAttribute("selected", "selected");
+    // }
     selector.append(option);
   }
   return selector;
@@ -156,9 +160,11 @@ const showedTemplate = Handlebars.compile(refs.template.innerHTML.trim());
 refs.form.addEventListener("submit", showUserData);
 
 function getStoregedData() {
-  const userData = JSON.parse(localStorage.getItem("userData"));
-  refs.inputedName.value = userData.name;
-  refs.inputedSurName.value = userData.surname;
+  if (localStorage.userData) {
+    const userData = JSON.parse(localStorage.getItem("userData"));
+    refs.inputedName.value = userData.name;
+    refs.inputedSurName.value = userData.surname;
+  }
 }
 
 getStoregedData();
